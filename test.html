@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>YOSA BASE</title>
+    <meta charset="utf-8" />
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <style>
+    h1 {font-size:50px; color:orange}
+    </style>
+  </head>
+
+  <body>
+    <script>
+      function omikuji(){
+        const fortune = Math.floor(Math.random()*3)
+        if(fortune == 2){
+          document.write("YOSA BASEへようこそ！")
+        }
+        else if (fortune == 1){
+          document.write("<h2>YOSA BASEへようこそ！！</h2>")
+        }
+        else{
+          document.write("<h1>YOSA BASEへようこそ！！！</h1>")
+        }
+      }
+      omikuji()
+    </script>
+    <h1>1番大きい見出し（見出し1）</h1>
+    <h2>次に大きい見出し（見出し2）</h2>
+    <p class="danraku">段落の塊はpタグの中に記述していきます</p>
+    <h3>3つ目に大きい見出し（見出し3）</h3>
+    <ul>
+      <li>サッカー</li>
+      <li>野球</li>
+      <li id="tennin">テニス</li>
+    </ul>
+  </body>
+</html>
