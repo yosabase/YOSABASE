@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>YOSA BASE</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>鋭意作成中</h1>
+    
+    <a href="#" class="button" id="teamSearchButton">チームで検索する</a>
+
+    <a href="#" class="button" id="yearSearchButton">年度で検索する</a>
+
+    <a href="#" class="button" id="festivalSearchButton">受賞歴で検索する</a>
+
+    <table id="csvTable"></table>
+
+    <a href="YB_entrance.html" class="button">ホームへ戻る</a>
+
+    <script>
+        // スクリプトをロードしてから関数を呼び出す関数
+        function loadScriptAndExecute(callback) {
+            if (!document.getElementById('dynamicScript')) {
+                const script = document.createElement('script');
+                script.src = 'YB_search.js';
+                script.id = 'dynamicScript';
+
+                script.onload = () => {
+                    console.log("スクリプトがロードされました。コールバックを実行します。");
+                    callback(); // 指定されたコールバック関数を実行
+                };
+
+                script.onerror = () => console.error("スクリプトの読み込みに失敗しました。");
+
+                document.body.appendChild(script);
+            } else {
+                callback();
+            }
+        }
+
+        // ボタンのクリックイベントの設定
+        document.getElementById('teamSearchButton').addEventListener('click', () => {
+            loadScriptAndExecute(() => {
+                if (typeof fetchAndDisplayCSV === "function") {
+                    fetchAndDisplayCSV();
+                } else {
+                    console.error("fetchAndDisplayCSV 関数が見つかりません");
+                }
+            });
+        });
+
+        document.getElementById('yearSearchButton').addEventListener('click', () => {
+            loadScriptAndExecute(() => {
+                if (typeof fetchAndDisplayUniqueYears === "function") {
+                    fetchAndDisplayUniqueYears();
+                } else {
+                    console.error("fetchAndDisplayUniqueYears 関数が見つかりません");
+                }
+            });
+        });
+
+        document.getElementById('festivalSearchButton').addEventListener('click', () => {
+            loadScriptAndExecute(() => {
+                if (typeof fetchAndDisplayfestival === "function") {
+                    fetchAndDisplayfestival();
+                } else {
+                    console.error("fetchAndDisplayfestival 関数が見つかりません");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
